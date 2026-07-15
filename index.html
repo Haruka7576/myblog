@@ -374,23 +374,29 @@
         </section>
 
     </div>
-<!-- [新欄位] 讀者留言板 -->
-        <section id="guestbook">
-            <h2>讀者留言 / Guestbook</h2>
-            <div class="about-card" style="padding: 30px; background: #ffffff; max-width: 600px; margin: 0 auto;">
-                <p style="margin-top: 0; color: var(--forest-light); font-size: 0.95rem;">歡迎在這邊留跟小企鵝打聲招呼！💬留言區下方欄位輸入暱稱及email(可隨便打)後點選‘post as guest’框框就能匿名留言囉</p>
+<!-- [新欄位] 讀者留言板（標題與卡片皆置中調整） -->
+        <section id="guestbook" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin: 40px auto; text-align: center;">
+            
+            <!-- 標題置中，並加上與上方卡片一致的風格 -->
+            <h2 style="margin-bottom: 24px; color: var(--forest-dark);">讀者留言 / Guestbook</h2>
+            
+            <!-- 留言板卡片：限制最大寬度為 600px，並利用 margin 置中 -->
+            <div class="about-card" style="padding: 30px; background: #ffffff; max-width: 600px; width: 100%; margin: 0 auto; box-sizing: border-box; text-align: left;">
+                <p style="margin-top: 0; color: var(--forest-light); font-size: 0.95rem; text-align: center; margin-bottom: 20px;">
+                    歡迎在這邊留下你的足跡，或跟企鵝王打聲招呼！💬登入留言或，留言區下方欄位輸入暱稱及email(可隨便打)後點選‘post as guest’框框就能匿名留言囉
+                </p>
                 
                 <!-- Disqus 留言板容器 -->
                 <div id="disqus_thread"></div>
                 
                 <script>
                     var disqus_config = function () {
-                        this.page.url = window.location.href;  // 自動獲取你網頁的網址
-                        this.page.identifier = window.location.pathname; // 自動偵測頁面路徑
+                        this.page.url = window.location.href;  
+                        this.page.identifier = window.location.pathname; 
                     };
-                    (function() { // DON'T EDIT BELOW THIS LINE
+                    (function() { 
                     var d = document, s = d.createElement('script');
-                    // ⚠️ 請把下方的 'chi-blog' 替換成你在步驟一設定的 Unique Disqus URL ⚠️
+                    // ⚠️ 請記得確認下方的 'chi-blog' 替換成你專屬的 Unique Disqus URL ⚠️
                     s.src = 'https://la-vie-en-verte.disqus.com/embed.js';
                     s.setAttribute('data-timestamp', +new Date());
                     (d.head || d.body).appendChild(s);
@@ -398,8 +404,7 @@
                 </script>
                 <noscript>請開啟 JavaScript 以檢視 <a href="https://disqus.com/?ref_noscript">Disqus 提供的留言板</a></noscript>
             </div>
-        </section>
-    
+        </section>    
     <!-- 頁尾 -->
     <footer>
         <p>🍃 順應自然，自在生活 &copy; 2026 人森絮語 founded by G. and CHI .</p>
