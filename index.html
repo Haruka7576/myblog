@@ -374,15 +374,14 @@
         </section>
 
     </div>
-<!-- [新欄位] 讀者留言板（標題與卡片皆置中調整） -->
-        <section id="guestbook" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; margin: 40px auto; text-align: center;">
+<!-- [新欄位] 讀者留言板（完美融合版） -->
+        <section id="guestbook" class="container">
+            <!-- 標題配置：採用與文章列表、隨筆完全一樣的 H2 樣式與底部分割線 -->
+            <h2>讀者留言 / Guestbook</h2>
             
-            <!-- 標題置中，並加上與上方卡片一致的風格 -->
-            <h2 style="margin-bottom: 24px; color: var(--forest-dark);">讀者留言 / Guestbook</h2>
-            
-            <!-- 留言板卡片：限制最大寬度為 700px，並利用 margin 置中 -->
-            <div class="about-card" style="padding: 30px; background: #ffffff; max-width: ˙700px; width: 100%; margin: 0 auto; box-sizing: border-box; text-align: left;">
-                <p style="margin-top: 0; color: var(--forest-light); font-size: 0.95rem; text-align: center; margin-bottom: 20px;">
+            <!-- 留言卡片配置：套用 about-card 或 blog-card 的樣式，讓外框大小、陰影與留白完美一致 -->
+            <div class="about-card" style="width: 100%; box-sizing: border-box;">
+                <p style="margin-top: 0; color: var(--forest-light); font-size: 0.95rem; margin-bottom: 24px;">
                     歡迎在這邊留下你的足跡，或跟企鵝王打聲招呼！💬登入留言或，留言區下方欄位輸入暱稱及email(可隨便打)後點選‘post as guest’框框就能匿名留言囉
                 </p>
                 
@@ -396,7 +395,7 @@
                     };
                     (function() { 
                     var d = document, s = d.createElement('script');
-                    // ⚠️ 請記得確認下方的 'chi-blog' 替換成你專屬的 Unique Disqus URL ⚠️
+                    // ⚠️ 請確認下方的 'chi-blog' 已替換成你專屬的 Unique Disqus URL ⚠️
                     s.src = 'https://la-vie-en-verte.disqus.com/embed.js';
                     s.setAttribute('data-timestamp', +new Date());
                     (d.head || d.body).appendChild(s);
@@ -404,8 +403,7 @@
                 </script>
                 <noscript>請開啟 JavaScript 以檢視 <a href="https://disqus.com/?ref_noscript">Disqus 提供的留言板</a></noscript>
             </div>
-        </section>    
-    <!-- 頁尾 -->
+        </section>    <!-- 頁尾 -->
     <footer>
         <p>🍃 順應自然，自在生活 &copy; 2026 人森絮語 founded by G. and CHI .</p>
     </footer>
