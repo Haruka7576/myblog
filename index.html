@@ -375,10 +375,35 @@
         </section>
 
     </div>
-
+<!-- [新欄位] 讀者留言板 -->
+        <section id="guestbook">
+            <h2>讀者留言 / Guestbook</h2>
+            <div class="about-card" style="padding: 30px; background: #ffffff;">
+                <p style="margin-top: 0; color: var(--forest-light); font-size: 0.95rem;">歡迎在這邊留下你的足跡，或跟企鵝王打聲招呼！💬</p>
+                
+                <!-- Disqus 留言板容器 -->
+                <div id="disqus_thread"></div>
+                
+                <script>
+                    var disqus_config = function () {
+                        this.page.url = window.location.href;  // 自動獲取你網頁的網址
+                        this.page.identifier = window.location.pathname; // 自動偵測頁面路徑
+                    };
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    // ⚠️ 請把下方的 'chi-blog' 替換成你在步驟一設定的 Unique Disqus URL ⚠️
+                    s.src = 'https://chi-blog.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>請開啟 JavaScript 以檢視 <a href="https://disqus.com/?ref_noscript">Disqus 提供的留言板</a></noscript>
+            </div>
+        </section>
+    
     <!-- 頁尾 -->
     <footer>
-        <p>🍃 順應自然，自在生活 &copy; 2026 人森絮語.</p>
+        <p>🍃 順應自然，自在生活 &copy; 2026 人森絮語 founded by G. and CHI .</p>
     </footer>
 
 </body>
