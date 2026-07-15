@@ -72,26 +72,25 @@
             color: var(--forest-light);
         }
 
-        /* [新樣式] 流量計數器 */
+        /* [已放大版本] 流量計數器 */
         .visitor-counter {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
+            gap: 8px; /* 稍微拉開文字與數字的距離 */
+            font-size: 0.95rem; /* 文字從 0.8rem 放大到 0.95rem */
             color: var(--forest-light);
             background-color: rgba(82, 110, 99, 0.05);
-            padding: 4px 12px;
+            padding: 6px 16px; /* 加大上下左右的內部留白 */
             border-radius: 30px;
             border: 1px solid rgba(82, 110, 99, 0.12);
             margin-left: 24px;
             user-select: none;
         }
         .visitor-counter img {
-            height: 34px;
-            /* 平時呈現柔和的灰色調，融入網頁 */
+            height: 24px; /* 【關鍵】數字圖片高度從 16px 直接放大到 24px！ */
             filter: grayscale(100%) opacity(0.7);
             transition: all 0.3s ease;
-        }
+        } 
         .visitor-counter:hover img {
             /* 鼠標懸停時恢復原本復古的綠色數字 */
             filter: grayscale(0%) opacity(1);
