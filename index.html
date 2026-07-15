@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人森絮語 | CHI 的個人部落格 & 靈感隨筆</title>
+    <style>
+        /* 大自然與文青配色 */
+        :root {
+            --forest-dark: #2c423f;
+            --forest-light: #526e63;
+            --wood-warm: #8d755b;
+            --sand-bg: #f5f2eb;
+            --leaf-accent: #d2b48c;
+            --text-main: #3a423f;
+        }
+
+        body {
+            font-family: 'PingFang TC', 'Heiti TC', 'Noto Serif TC', 'Microsoft JhengHei', serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: var(--sand-bg);
+            color: var(--text-main);
+            background-image: radial-gradient(rgba(82, 110, 99, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        /* 導覽列 */
+        nav {
+            background-color: rgba(245, 242, 235, 0.9);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid #e0dacb;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        nav .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--forest-dark);
+            text-decoration: none;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* 導覽連結與計數器容器 */
+        nav .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        nav .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            letter-spacing: 1px;
+        }
+        nav .nav-links a:hover {
+            color: var(--forest-light);
+        }
+
+        /* [新樣式] 流量計數器 */
+        .visitor-counter {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--forest-light);
+            background-color: rgba(82, 110, 99, 0.05);
+            padding: 4px 12px;
+            border-radius: 30px;
+            border: 1px solid rgba(82, 110, 99, 0.12);
+            margin-left: 24px;
+            user-select: none;
+        }
+        .visitor-counter img {
+            height: 16px;
+            /* 平時呈現柔和的灰色調，融入網頁 */
+            filter: grayscale(100%) opacity(0.7);
+            transition: all 0.3s ease;
+        }
+        .visitor-counter:hover img {
+            /* 鼠標懸停時恢復原本復古的綠色數字 */
+            filter: grayscale(0%) opacity(1);
+        }
+
+        /* 主要內容容器 */
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* 首頁大自然主視覺區與多葉子動態 */
+        .hero-banner {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #e6ede9;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 1px solid #d3ded7;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 葉子共通樣式 */
+        .leaf-scene span,
+        .hero-banner::before,
+        .hero-banner::after {
+            position: absolute;
+            font-size: 18px;
+            opacity: 0.4;
+            user-select: none;
+            pointer-events: none;
+            animation: floatLeaf linear infinite;
+        }
+
+        @keyframes floatLeaf {
+            0% {
+                transform: translateY(-20px) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(120px) translateX(30px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 7 片落葉 */
+        .hero-banner::after { content: '🍃'; right: 15%; top: 10%; animation-duration: 8s; animation-delay: -1s; }
+        .hero-banner::before { content: '🍂'; left: 10%; top: 20%; animation-duration: 10s; animation-delay: -3s; }
+        .leaf-scene .leaf-3 { content: '🍁'; right: 30%; top: -10px; animation-duration: 9s; animation-delay: -5s; }
+        .leaf-scene .leaf-4 { content: '🍃'; left: 25%; top: 30%; animation-duration: 12s; animation-delay: -2s; font-size: 15px; }
+        .leaf-scene .leaf-5 { content: '🍂'; right: 5%; top: 40%; animation-duration: 7s; animation-delay: -4s; }
+        .leaf-scene .leaf-6 { content: '🍃'; left: 40%; top: -15px; animation-duration: 11s; animation-delay: -6s; }
+        .leaf-scene .leaf-7 { content: '🍁'; right: 20%; top: 50%; animation-duration: 13s; animation-delay: -0.5s; font-size: 20px; }
+
+        .hero-banner h1, .hero-banner p { position: relative; z-index: 1; }
+        .hero-banner h1 { color: var(--forest-dark); font-size: 2.4rem; margin: 0 0 15px 0; font-weight: 500; letter-spacing: 3px; }
+        .hero-banner p { color: var(--forest-light); font-size: 1rem; margin: 0; letter-spacing: 1px; }
+
+        /* 區塊樣式 */
+        section { margin-bottom: 60px; }
+        h2 {
+            color: var(--forest-dark);
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+        }
+        h2::before { content: '✦'; color: var(--wood-warm); }
+
+        .about-card {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid #e5dfd3;
+            box-shadow: 0 4px 20px rgba(82, 110, 99, 0.03);
+        }
+
+        /* 光影採集相簿區 */
+        .photo-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .polaroid {
+            background: #ffffff;
+            padding: 16px 16px 20px 16px;
+            border-radius: 2px;
+            border: 1px solid #e5dfd3;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            max-width: 330px;
+        }
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 15px 30px rgba(82, 110, 99, 0.1);
+        }
+        
+        .polaroid-img-wrapper {
+            width: 300px;
+            height: 300px;
+            background-color: #eee;
+            border: 1px solid #f0f0f0;
+            overflow: hidden;
+        }
+        .polaroid-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .polaroid-caption {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--forest-dark);
+            text-align: center;
+            font-family: 'PingFang TC', sans-serif;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* 日常隨筆 */
+        .thought-item {
+            background: #fdfbf7;
+            border: 1px solid #ebd9c5;
+            padding: 24px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .thought-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background-color: var(--wood-warm);
+            border-radius: 12px 0 0 12px;
+        }
+        .thought-date { font-size: 0.8rem; color: var(--wood-warm); margin-bottom: 8px; font-weight: 500; }
+        .thought-text { font-size: 0.95rem; color: var(--text-main); line-height: 1.7; }
+
+        /* 文章列表 */
+        .blog-list { display: flex; flex-direction: column; gap: 30px; }
+        .blog-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #e5dfd3;
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(82, 110, 99, 0.06);
+            border-color: var(--forest-light);
+        }
+        .blog-meta { font-size: 0.85rem; color: var(--forest-light); margin-bottom: 8px; display: flex; gap: 12px; }
+        .blog-card h3 { margin: 0 0 12px 0; font-size: 1.25rem; font-weight: 500; }
+        .blog-card h3 a { color: var(--forest-dark); text-decoration: none; transition: color 0.3s; }
+        .blog-card h3 a:hover { color: var(--forest-light); }
+        .blog-summary { color: #656d6a; font-size: 0.95rem; margin: 0; }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #ebd9c5;
+            color: var(--forest-dark);
+            font-size: 0.85rem;
+            border-top: 1px solid #dfcdb8;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">🌲 人森絮語</a>
+            
+            <!-- 導覽連結與流量計數器 -->
+            <div class="nav-links">
+                <a href="#about">關於</a>
+                <a href="#gallery">光影</a>
+                <a href="#thoughts">隨筆</a>
+                <a href="#blog">文章</a>
+                
+                <!-- 流量計數器（自動累計並置右顯示） -->
+                <div class="visitor-counter" title="感謝你的光臨">
+    <span>訪客數</span>
+    <!-- 換成極度穩定的像素風計數器，ID同樣可以自由更改 -->
+    <img src="https://count.getloli.com/get/@chi-personal-blog-2026?theme=asoul" alt="Visitor Count" style="height: 28px;">
+</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- 橫幅主視覺 -->
+        <header class="hero-banner">
+            <div class="leaf-scene">
+                <span class="leaf-3">🍁</span>
+                <span class="leaf-4">🍃</span>
+                <span class="leaf-5">🍂</span>
+                <span class="leaf-6">🍃</span>
+                <span class="leaf-7">🍁</span>
+            </div>
+            <h1>聽，CHI的呢喃。</h1>
+            <p>收集日光、綠意與生活中的零碎靈感。</p>
+        </header>
+
+        <!-- 關於我 -->
+        <section id="about">
+            <h2>關於我 / About</h2>
+            <div class="about-card">
+                <p>你好，我是 CHI。歡迎來到這片安靜的網路森林。</p>
+                <p>我喜歡親近自然，也喜歡在日常中慢下來觀察那些容易被忽略的細節。這個空間是我的個人雜筆與部落格，用來安放生活中的奇思妙想、閱讀心得與旅行痕跡。</p>
+                <p>希望你在這裡也能找到一絲平靜與共鳴。</p>
+            </div>
+        </section>
+
+        <!-- 光影採集 -->
+        <section id="gallery">
+            <h2>光影採集 / Light & Shadow</h2>
+            <div class="photo-gallery">
+                
+                <!-- 企鵝王第一篇投稿 -->
+                <div class="polaroid" style="transform: rotate(-1.5deg);">
+                    <div class="polaroid-img-wrapper">
+                        <!-- ⚠️ 請將下方的 "你的圖片網址" 替換成上傳後的照片連結 ⚠️ -->
+                        <img src="penguin.jpg" alt="CHI的企鵝王體驗">
+                    </div>
+                    <div class="polaroid-caption">🐧 測試，想當企鵝王</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 日日常隨筆 -->
+        <section id="thoughts">
+            <h2>日常隨筆 / Thoughts</h2>
+            <div class="thought-item">
+                <div class="thought-date">2026.07.15</div>
+                <div class="thought-text">
+                    今天學習用 Gemini 做個人網頁，突然想到國中時也很喜歡做個人網頁。當初的起因是什麼已經忘了，是電腦課教的嗎？
+                    <br><br>
+                    與現在不同的是，當時花了很多時間自己摸索、學習 HTML 語法與各種華麗的特效語法。沒想到在今天，竟然只需要跟 Gemini 講講話、對話幾句就有大致的構型。AI 真的好厲害啊！
+                </div>
+            </div>
+            <div class="thought-item">
+                <div class="thought-date">2026.07.08</div>
+                <div class="thought-text">把書架上的書重新按顏色排列，意外地發現綠色與大地色系的書皮最多。看來我對自然的嚮往，早就無聲地藏在閱讀習慣裡了。</div>
+            </div>
+        </section>
+
+        <!-- 部落格文章 -->
+        <section id="blog">
+            <h2>文章列表 / Articles</h2>
+            <div class="blog-list">
+                <article class="blog-card">
+                    <div class="blog-meta"><span>2026.07.01</span><span>•</span><span>生活美學</span></div>
+                    <h3><a href="#">在大自然裡找回內心的秩序</a></h3>
+                    <p class="blog-summary">現代生活的節奏太快，我們常常忘記了慢下來呼吸的感覺。上個週末，我獨自去了一趟森林步道，試著用五感去體驗周圍的一切...</p>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-meta"><span>2026.06.20</span><span>•</span><span>日常雜想</span></div>
+                    <h3><a href="#">建立一個屬於自己的「靈感防空洞」</a></h3>
+                    <p class="blog-summary">在鋪天蓋地的社交媒體通知中，我們該如何保留一片純淨的思考空間？這篇文章聊聊為什麼我決定建立這個不被演算法干擾的個人網站...</p>
+                </article>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>🍃 順應自然，自在生活 &copy; 2026 人森絮語.</p>
+    </footer>
+
+</body>
+</html>
